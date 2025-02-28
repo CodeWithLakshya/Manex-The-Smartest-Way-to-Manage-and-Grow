@@ -1,6 +1,7 @@
-import LoadingSkeleton from "components/LoadingSkeleton";
-
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
-    return <LoadingSkeleton />
-  }
+    return (
+        <div className="flex h-screen w-full items-center justify-center bg-white">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600"></div>
+        </div>
+    );
+}

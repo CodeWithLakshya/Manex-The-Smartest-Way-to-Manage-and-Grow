@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import NavigationBar from "components/NavigationBar";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const geistPoppins = Geist({
   variable: "--font-poppins",
@@ -18,7 +21,8 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
       <body
         className={`${geistPoppins.variable} antialiased`}
       >
-        {children}
+        <NavigationBar />
+        <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
     </html>
   );

@@ -10,12 +10,32 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Inbox, Mail } from '@mui/icons-material';
+import { Apps, Inbox, Info, Mail, SupportAgent } from '@mui/icons-material';
+import { useRouter } from 'next/navigation';
 
-const pages = ['Features', 'About', 'Support'];
+const pages = [
+    {
+        name: 'Features',
+        slug: 'features',
+        pageRoute: '/features',
+        icon: Apps
+    },
+    {
+        name: 'About',
+        slug: 'about',
+        pageRoute: '/about',
+        icon: Info
+    },
+    {
+        name: 'Support',
+        slug: 'support',
+        pageRoute: '/support',
+        icon: SupportAgent
+    }];
 
 const NavigationBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    const router = useRouter()
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -25,18 +45,23 @@ const NavigationBar = () => {
         setAnchorElNav(null);
     };
 
+    const navigateToPage = (pageRoute: string) => {
+        handleCloseNavMenu();
+        router.replace(pageRoute);
+    }
+
     const drawer = (
         <div className='w-[15em]'>
             <Toolbar />
             <Divider />
             <List>
-                {pages.map((text, index) => (
-                    <ListItem key={text} disablePadding onClick={handleCloseNavMenu}>
+                {pages.map((text) => (
+                    <ListItem key={text.slug} disablePadding onClick={() => navigateToPage(text.pageRoute)}>
                         <ListItemButton>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <Inbox /> : <Mail />}
+                                <text.icon />
                             </ListItemIcon>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={text.name} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -45,18 +70,15 @@ const NavigationBar = () => {
     );
 
     return (
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* Logo Icon - Mobile */}
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    
-                    {/* Logo - Mobile */}
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
+                        onClick={() => router.replace("/")}
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -65,12 +87,11 @@ const NavigationBar = () => {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            cursor: 'pointer'
                         }}
                     >
                         MANEX
                     </Typography>
-
-                    {/* Drawer - Mobile */}
                     <Box sx={{ flexGrow: 0, pr: "8px", display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -91,21 +112,17 @@ const NavigationBar = () => {
                                 keepMounted: false,
                             }}
                             id="menu-appbar"
-                            sx={{ display: { xs: 'block', md: 'none' }, width: '30vw' }} // Set the drawer width to 30% of the viewport width
+                            sx={{ display: { xs: 'block', md: 'none' }, width: '30vw' }}
                         >
                             {drawer}
                         </Drawer>
                     </Box>
-
-                    {/* Logo Icon - Laptop/ Desktop */}
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-
-                    {/* Logo - Laptop/ Desktop */}
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href="/"
+                        onClick={() => router.replace("/")}
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -115,28 +132,36 @@ const NavigationBar = () => {
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
+                            cursor: 'pointer'
                         }}
                     >
                         MANEX
                     </Typography>
-
-                    {/* Pages - Laptop/ Desktop  */}
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
+                                key={page.slug}
+                                onClick={() => navigateToPage(page.pageRoute)}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                {page.name}
                             </Button>
                         ))}
                     </Box>
-
-                    {/* Login/ Signup Buttons - Laptop/ Desktop */}
                     <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-                        <Button variant="outlined" sx={{ color: "white", border: 2, borderRadius: "15px", mr: 1 }}>Login</Button>
-                        <Button variant="outlined" sx={{ color: "white", border: 2, borderRadius: "15px" }}>Sign Up</Button>
+                        <Button
+                            variant="outlined"
+                            onClick={() => router.replace('/login')} sx={{ color: "white", border: 2, borderRadius: "15px", mr: 1 }}
+                        >
+                            Login
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            onClick={() => router.replace('/signup')}
+                            sx={{ color: "white", border: 2, borderRadius: "15px" }}
+                        >
+                            Sign Up
+                        </Button>
                     </Box>
                 </Toolbar>
             </Container>
