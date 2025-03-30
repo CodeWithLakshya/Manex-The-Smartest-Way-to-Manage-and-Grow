@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import NavigationBar from "components/NavigationBar";
 import { Suspense } from "react";
 import Loading from "./loading";
+import NavigationBar from "@/components/NavigationBar";
 
 const geistPoppins = Geist({
   variable: "--font-poppins",

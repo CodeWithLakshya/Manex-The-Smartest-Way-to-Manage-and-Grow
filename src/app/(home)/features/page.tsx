@@ -1,5 +1,5 @@
 import { Toolbar } from "@mui/material"
-import FeaturesList from "components/FeaturesList"
+import FeaturesList from "@/components/FeaturesList"
 
 const Features = () => {
     return (
