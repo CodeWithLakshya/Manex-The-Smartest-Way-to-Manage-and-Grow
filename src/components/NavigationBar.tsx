@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import { Apps, Inbox, Info, Mail, SupportAgent } from '@mui/icons-material';
+import { Apps, Info, SupportAgent } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
 
 const pages = [
@@ -70,7 +70,7 @@ const NavigationBar = () => {
     );
 
     return (
-        <AppBar position="fixed">
+        <AppBar position="fixed" sx={{backgroundColor: 'var(--primary)'}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

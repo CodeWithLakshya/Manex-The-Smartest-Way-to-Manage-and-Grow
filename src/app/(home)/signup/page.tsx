@@ -5,6 +5,7 @@ const Signup = () => {
         <>
             <Toolbar />
             Signup Page
+            
         </>
     )
 }

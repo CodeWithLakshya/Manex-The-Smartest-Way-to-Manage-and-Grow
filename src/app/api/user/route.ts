@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
         messages.push('MongoDB Connected Successfully!')
 
         const user = {
-            userId: "100002",
+            userId: "100004",
             name: name,
             password: password,
             cpwd: cpwd,
@@ -80,10 +80,9 @@ export async function POST(req: NextRequest) {
         const newUser = new User(user);
         await newUser.save();
 
-        return NextResponse.json({ user, message: "User inserted" }, { status: 200 })
+        return NextResponse.json({ user, message: "User created successfully" }, { status: 200 })
     } catch (error) {
         errors.push('Database Connection Failed')
     }
 
-    return new Response('User created successfully', { status: 200 });
 }

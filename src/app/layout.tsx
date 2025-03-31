@@ -3,7 +3,8 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import Loading from "./loading";
-import NavigationBar from "@/components/NavigationBar";
+import NavigationBar from "@/components/NavigationBar"
+import { CssBaseline } from "@mui/material"
 
 const geistPoppins = Geist({
   variable: "--font-poppins",
@@ -21,6 +22,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
       <body
         className={`${geistPoppins.variable} antialiased`}
       >
+        <CssBaseline />
         <NavigationBar />
         <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
