@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import "./globals.css";
-import { Suspense } from "react";
-import Loading from "./loading";
-import NavigationBar from "@/components/NavigationBar"
+import type { Metadata } from "next"
+import { Geist } from "next/font/google"
+import "./globals.css"
+import { Suspense } from "react"
+import Loading from "./loading"
 import { CssBaseline } from "@mui/material"
+import NavWrapper from "@/components/NavWrapper"
 
 const geistPoppins = Geist({
   variable: "--font-poppins",
@@ -19,11 +19,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistPoppins.variable} antialiased`}
-      >
+      <body className={`${geistPoppins.variable} antialiased`}>
         <CssBaseline />
-        <NavigationBar />
+        <NavWrapper />
         <Suspense fallback={<Loading />}>{children}</Suspense>
       </body>
     </html>
