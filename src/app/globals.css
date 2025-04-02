@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #e6f0ff;
-  --foreground: #003366;
-  --primary: #003f7f;
-  --secondary: #007bff;
-  --backgroundDefault: #f0f8ff;
-  --backgroundPaper: #ffffff;
-  --textPrimary: #003366;
-  --textSecondary: #00509e;
-  --info: #007bff;
-  --warning: #ffc107;
+  --background: #e6f0ff; /* Light blue background */
+  --foreground: #003366; /* Dark blue foreground */
+  --primary: #003f7f; /* Trustworthy blue */
+  --secondary: #007bff; /* Bright blue for accents */
+  --backgroundDefault: #f0f8ff; /* Very light blue for default backgrounds */
+  --backgroundPaper: #ffffff; /* White for paper elements */
+  --textPrimary: #003366; /* Dark blue for primary text */
+  --textSecondary: #00509e; /* Medium blue for secondary text */
+  --textSecondaryHover: rgba(0, 80, 158, 0.7); /* Fade color for hover */
+  --info: #007bff; /* Info color in blue */
+  --warning: #ffc107; /* Warning color in yellow */
+  --hoverBackground: #cce5ff; /* Light blue on hover */
+  --hoverText: #001f3f; /* Darker blue for text on hover */
+  --activeBackground: #b3d7ff; /* Active state background */
+  --activeText: #001a33; /* Darker text for active state */
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #001f3f;
     --foreground: #ffffff;
@@ -28,7 +33,7 @@
     --info: #66b3ff;
     --warning: #ffc107;
   }
-}
+} */
 
 body {
   color: var(--foreground);
