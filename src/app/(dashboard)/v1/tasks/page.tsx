@@ -75,7 +75,7 @@ const Page: React.FC = () => {
     };
 
     return (
-        <div className="flex space-x-4 p-4 box-border overflow-hidden">
+        <div className="flex space-x-4 p-0 box-border overflow-hidden">
             <Paper className="flex-1 p-4 overflow-auto" onDrop={(e) => handleDrop(e, 'todo')} onDragOver={handleDragOver}>
                 <Typography variant="h6">To Do Tasks</Typography>
                 <Button onClick={() => addTask('todo')} className="add-task-button">+</Button>
@@ -87,19 +87,19 @@ const Page: React.FC = () => {
                                     <MoreHoriz />
                                 </IconButton>
                                 <CardContent>
-                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 11 }}>
+                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 9 }}>
                                         <strong>Task ID:</strong> {task.id}
                                     </Typography>
-                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 18 }}>
+                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 12 }}>
                                         {task.name}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
                                         <strong>Assignment Date:</strong> {task.assignmentDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
-                                        <strong>End Date:</strong> {task.endDate}
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
+                                        <strong>&nbsp; | End Date:</strong> {task.endDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ margin: '0 0', fontSize: 10 }}>
                                         <strong>Members:</strong> {task.members.join(', ')}
                                     </Typography>
                                 </CardContent>
@@ -119,19 +119,19 @@ const Page: React.FC = () => {
                                     <MoreHoriz />
                                 </IconButton>
                                 <CardContent>
-                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 11 }}>
+                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 9 }}>
                                         <strong>Task ID:</strong> {task.id}
                                     </Typography>
-                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 18 }}>
+                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 12 }}>
                                         {task.name}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
                                         <strong>Assignment Date:</strong> {task.assignmentDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
-                                        <strong>End Date:</strong> {task.endDate}
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
+                                        <strong>&nbsp; | End Date:</strong> {task.endDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ margin: '0 0', fontSize: 10 }}>
                                         <strong>Members:</strong> {task.members.join(', ')}
                                     </Typography>
                                 </CardContent>
@@ -146,24 +146,24 @@ const Page: React.FC = () => {
                 <List>
                     {tasks.completed.map(task => (
                         <ListItem key={task.id} draggable onDragStart={(e) => handleDragStart(e, task.id)}>
-                            <Card variant='outlined' sx={{ width: '100%', position: 'relative' }}>
+                            <Card variant='outlined' sx={{ width: '100%', height: 'fit-content', position: 'relative' }}>
                                 <IconButton sx={{ position: 'absolute', top: 8, right: 8 }}>
                                     <MoreHoriz />
                                 </IconButton>
                                 <CardContent>
-                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 11 }}>
+                                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 9 }}>
                                         <strong>Task ID:</strong> {task.id}
                                     </Typography>
-                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 18 }}>
+                                    <Typography variant="h6" component="div" sx={{ fontWeight: 'bold', fontSize: 12 }}>
                                         {task.name}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
                                         <strong>Assignment Date:</strong> {task.assignmentDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
-                                        <strong>End Date:</strong> {task.endDate}
+                                    <Typography variant="body2" sx={{ display: 'inline-block', margin: '0 0', fontSize: 10 }}>
+                                        <strong>&nbsp; | End Date:</strong> {task.endDate}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ margin: '8px 0' }}>
+                                    <Typography variant="body2" sx={{ margin: '0 0', fontSize: 10 }}>
                                         <strong>Members:</strong> {task.members.join(', ')}
                                     </Typography>
                                 </CardContent>

@@ -1,12 +1,13 @@
 "use client"
 import { Assignment, AssignmentTurnedIn, Dashboard, Group, Logout, People, Person, Settings } from '@mui/icons-material'
 import { Button, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Menu, MenuItem, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation'
 import React, { useState, MouseEvent } from 'react'
 
 const DrawerComponent: React.FC = () => {
     const drawerWidth = 240
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+    const router = useRouter()
     const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
@@ -33,13 +34,13 @@ const DrawerComponent: React.FC = () => {
                 </Typography>
                 <div>
                     <List>
-                        <ListItem component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
+                        <ListItem onClick={()=>{router.replace('/v1')}} component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
                             <ListItemIcon>
                                 <Dashboard />
                             </ListItemIcon>
                             <ListItemText primary="Dashboard" />
                         </ListItem>
-                        <ListItem component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
+                        <ListItem onClick={()=>{router.replace('/v1/tasks')}} component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
                             <ListItemIcon>
                                 <Assignment />
                             </ListItemIcon>
