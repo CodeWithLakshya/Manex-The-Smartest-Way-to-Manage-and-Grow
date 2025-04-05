@@ -1,6 +1,6 @@
 "use client"
 import { MoreHoriz } from '@mui/icons-material';
-import { Button, Card, CardContent, CardHeader, IconButton, List, ListItem, Paper, Typography } from '@mui/material';
+import { Button, Card, CardContent, IconButton, List, ListItem, Paper, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 interface Task {
