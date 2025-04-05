@@ -1,9 +1,13 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { Typography, Paper, Box, Table, TableBody, TableCell, TableHead, TableRow, Card, CardContent, TextField, Button} from '@mui/material';
+import { Typography, Paper, Box, Table, TableBody, TableCell, TableHead, TableRow, Card, CardContent, TextField, Button } from '@mui/material';
 import NoOfClients from '@/components/Dashboard/Charts/NoOfClients';
 import CardsComponent from '@/components/Dashboard/Home/CardsComponent';
 import Top5ClientsTable from '@/components/Dashboard/Home/Top5ClientsTableComponent';
+import Top5ServicesComponent from '@/components/Dashboard/Home/Top5ServicesComponent';
+import ServicesRevenuesPieChart from '@/components/Dashboard/Charts/ServicesRevenuesPieChart';
+import SingleUserEfficiencyChart from '@/components/Dashboard/Charts/SingleUserEfficiencyChart';
+import UserEfficiencyChart from '@/components/Dashboard/Charts/UserEfficiencyChart';
 
 const DashboardPage: React.FC = () => {
     const [greeting, setGreeting] = useState<string>('');
@@ -37,77 +41,32 @@ const DashboardPage: React.FC = () => {
 
                 {/* KPI Cards */}
                 <CardsComponent />
-                
+
                 <Box className="w-full mt-4 space-y-4">
                     {/* Section Header */}
                     <Typography variant="h5" sx={{ color: 'var(--textPrimary)', fontWeight: 600 }}>
                         Clients Overview
                     </Typography>
 
-                    {/* Layout with tables and chart area */}
+                    {/* Top 5 Clients Table and Clients Trend Chart */}
                     <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Top 5 Clients Table */} <Top5ClientsTable />
                         {/* Clients Trend Chart */} <NoOfClients />
                     </Box>
 
-                    {/* Optional second table or another chart */}
+                    {/* Top 5 Services Table and Distribution of Revenue by Service Category */}
                     <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Another table or widget */}
-                        <Paper
-                            elevation={3}
-                            className="rounded-xl overflow-hidden"
-                            sx={{ backgroundColor: 'var(--backgroundPaper)' }}
-                        >
-                            <Box sx={{ overflowX: 'auto' }}>
-                                <Table>
-                                    <TableHead sx={{ backgroundColor: 'var(--backgroundDefault)' }}>
-                                        <TableRow>
-                                            <TableCell sx={{ color: 'var(--textPrimary)' }}>
-                                                Task
-                                            </TableCell>
-                                            <TableCell sx={{ color: 'var(--textPrimary)' }}>
-                                                Assigned To
-                                            </TableCell>
-                                            <TableCell sx={{ color: 'var(--textPrimary)' }}>
-                                                Status
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCell>GST Filing</TableCell>
-                                            <TableCell>John</TableCell>
-                                            <TableCell>
-                                                <span className="text-yellow-600 font-medium">Pending</span>
-                                            </TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>Bookkeeping</TableCell>
-                                            <TableCell>Priya</TableCell>
-                                            <TableCell>
-                                                <span className="text-green-600 font-medium">
-                                                    Completed
-                                                </span>
-                                            </TableCell>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
-                            </Box>
-                        </Paper>
+                        {/* Top 5 Services Table */} <Top5ServicesComponent />
+                        {/* All Services Pie Chart based on Revenues */} <ServicesRevenuesPieChart />
+                    </Box>
 
-                        {/* Another chart/graph placeholder */}
-                        <Paper
-                            elevation={3}
-                            className="rounded-xl flex items-center justify-center h-72"
-                            sx={{ backgroundColor: 'var(--backgroundPaper)' }}
-                        >
-                            <Typography
-                                variant="body1"
-                                sx={{ color: 'var(--textSecondary)' }}
-                            >
-                                Another Chart Area
-                            </Typography>
-                        </Paper>
+                    <Box className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        {/* Top 5 Services Table */} <UserEfficiencyChart />
+                    </Box>
+
+                    {/* For User - Partner, Staff, Article */}
+                    <Box className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        {/* Top 5 Services Table */} <SingleUserEfficiencyChart />
                     </Box>
                 </Box>
             </Box>

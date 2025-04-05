@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from '@mui/material'
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box, Typography } from '@mui/material'
 
 type Top5Client = {
     code: string
@@ -38,22 +38,23 @@ const Top5ClientsTable: React.FC = () => {
             sx={{ backgroundColor: 'var(--backgroundPaper)' }}
         >
             <Box sx={{ overflowX: 'auto' }}>
+                <Typography variant='h6' sx={{padding: 1, fontSize: 11, fontWeight: 700}}>Top 5 Clients as per Revenue</Typography>
                 <Table>
                     <TableHead sx={{ backgroundColor: 'var(--backgroundDefault)' }}>
                         <TableRow>
-                            <TableCell sx={{ color: 'var(--textPrimary)' }}>Client Code</TableCell>
-                            <TableCell sx={{ color: 'var(--textPrimary)' }}>Client Name</TableCell>
-                            <TableCell sx={{ color: 'var(--textPrimary)' }} align="right">Revenue ($)</TableCell>
-                            <TableCell sx={{ color: 'var(--textPrimary)' }}>Status</TableCell>
+                            <TableCell sx={{ color: 'var(--textPrimary)', fontSize: 11, fontWeight: 700 }}>Client Code</TableCell>
+                            <TableCell sx={{ color: 'var(--textPrimary)', fontSize: 11, fontWeight: 700 }}>Client Name</TableCell>
+                            <TableCell sx={{ color: 'var(--textPrimary)', fontSize: 11, fontWeight: 700 }} align="right">Revenue (Rs.)</TableCell>
+                            <TableCell sx={{ color: 'var(--textPrimary)', fontSize: 11, fontWeight: 700 }}>Status</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {Top5Clients.map((client, idx) => (
                             <TableRow key={idx}>
-                                <TableCell>{client.code}</TableCell>
-                                <TableCell>{client.name}</TableCell>
-                                <TableCell align="right">{client.revenue.toLocaleString()}</TableCell>
-                                <TableCell>
+                                <TableCell sx={{fontSize: 11}}>{client.code}</TableCell>
+                                <TableCell sx={{fontSize: 11}}>{client.name}</TableCell>
+                                <TableCell sx={{fontSize: 11}} align="right">{client.revenue.toLocaleString()}</TableCell>
+                                <TableCell sx={{fontSize: 11}}>
                                     <span className={`${getStatusColor(client.status)} font-medium`}>
                                         {client.status}
                                     </span>

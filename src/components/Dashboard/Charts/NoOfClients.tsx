@@ -40,40 +40,37 @@ const NoOfClients: React.FC = () => {
         setView(e.target.value)
     }
 
-    const currentData =
-        view === 'yoy' ? data.yoy : view === 'pop' ? data.pop : data.mom
+    const currentData = view === 'yoy' ? data.yoy : view === 'pop' ? data.pop : data.mom
     const xKey = view === 'yoy' ? 'year' : view === 'pop' ? 'period' : 'month'
     return (
         <>
             <Paper
                 elevation={3}
-                className="rounded-xl p-4"
+                className="rounded-xl"
                 sx={{ backgroundColor: 'var(--backgroundPaper)' }}
             >
-                <Box className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 gap-4">
-                    <Typography
-                        variant="h6"
-                        sx={{ color: 'var(--textPrimary)', fontWeight: 600 }}
-                    >
+                <Box className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 p-4">
+                    <Typography variant="h6" sx={{ color: 'var(--textPrimary)', paddingX: 1, fontSize: 11, fontWeight: 700 }}>
                         Client Growth Trend
                     </Typography>
 
                     <FormControl size="small" sx={{ minWidth: 160 }}>
-                        <InputLabel sx={{ color: 'var(--textSecondary)' }}>View</InputLabel>
+                        <InputLabel sx={{ color: 'var(--textSecondary)', fontSize: 11 }}>View</InputLabel>
                         <Select
                             value={view}
                             onChange={handleChange}
                             label="View"
                             sx={{
                                 color: 'var(--textPrimary)',
+                                fontSize: 11,
                                 '& .MuiOutlinedInput-notchedOutline': {
                                     borderColor: 'var(--primary)',
                                 },
                             }}
                         >
-                            <MenuItem value="yoy">Year on Year</MenuItem>
-                            <MenuItem value="pop">Period on Period</MenuItem>
-                            <MenuItem value="mom">Month on Month</MenuItem>
+                            <MenuItem value="yoy" sx={{fontSize: 11}}>Year on Year</MenuItem>
+                            <MenuItem value="pop" sx={{fontSize: 11}}>Period on Period</MenuItem>
+                            <MenuItem value="mom" sx={{fontSize: 11}}>Month on Month</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
