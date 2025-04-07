@@ -52,7 +52,7 @@ const DrawerComponent: React.FC = () => {
                             </ListItemIcon>
                             <ListItemText primary="Assignments" />
                         </ListItem>
-                        <ListItem component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
+                        <ListItem onClick={()=>{router.replace('/v1/clients')}} component={"button"} sx={{ '&:hover': { backgroundColor: 'var(--hoverBackground)', color: 'var(--hoverText)' } }}>
                             <ListItemIcon>
                                 <People />
                             </ListItemIcon>

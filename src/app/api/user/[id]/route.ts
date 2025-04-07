@@ -3,8 +3,8 @@ import User from "@/app/models/user"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
-    const resolvedParams = await params
-    const { id } = resolvedParams
+
+    const { id } = await params
 
     const errors: string[] = []
     const messages: string[] = []
@@ -21,4 +21,28 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
         return NextResponse.json({ errors, id: id }, { status: 500 })
     }
 
+}
+
+
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+
+    const { id } = await params
+
+    const errors: string[] = []
+    const messages: string[] = []
+
+    try {
+        await connectDB()
+        const body = await req.json()
+        const result = await User.updateOne({ userId: id }, { $set: body })
+        if (result.matchedCount === 0) {
+            errors.push("User not found")
+            return NextResponse.json({ errors }, { status: 404 });
+        }
+        messages.push("User updated successfully")
+        return NextResponse.json({ messages });
+    } catch (error) {
+        errors.push("Database Connection Failed")
+        return NextResponse.json({ errors, id: id }, { status: 500 });
+    }
 }

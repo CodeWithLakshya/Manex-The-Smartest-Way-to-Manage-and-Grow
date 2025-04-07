@@ -9,6 +9,7 @@ import {
     SelectChangeEvent,
     FormControl,
     InputLabel,
+    TextField,
 } from '@mui/material';
 import {
     BarChart,
@@ -90,42 +91,84 @@ const UserEfficiencyChart: React.FC = () => {
                     User Performance Metrics
                 </Typography>
 
-                <FormControl size="small">
-                    <InputLabel
-                        id="range-select-label"
-                        sx={{ fontSize: 11, color: 'var(--textSecondary)' }}
-                    >
-                        Time Range
-                    </InputLabel>
-                    <Select
-                        labelId="range-select-label"
-                        value={range}
-                        label="Time Range"
-                        onChange={handleRangeChange}
-                        sx={{
-                            minWidth: 150,
-                            fontSize: 11,
-                            color: 'var(--textPrimary)',
-                            '&:hover': { backgroundColor: 'var(--hoverBackground)' },
-                        }}
-                    >
-                        <MenuItem value="daily" sx={{ fontSize: 11 }}>
-                            Daily
-                        </MenuItem>
-                        <MenuItem value="weekly" sx={{ fontSize: 11 }}>
-                            Weekly
-                        </MenuItem>
-                        <MenuItem value="quarterly" sx={{ fontSize: 11 }}>
-                            Quarterly
-                        </MenuItem>
-                        <MenuItem value="semiannually" sx={{ fontSize: 11 }}>
-                            Semi Annually
-                        </MenuItem>
-                        <MenuItem value="annually" sx={{ fontSize: 11 }}>
-                            Annually
-                        </MenuItem>
-                    </Select>
-                </FormControl>
+                <div className='flex gap-2'>
+                    <FormControl size="small">
+                        <TextField
+                            label="From Date"
+                            type="date"
+                            variant="outlined"
+                            InputLabelProps={{ shrink: true }}
+                            sx={{
+                                '& label': { color: 'var(--textSecondary)', fontSize: 11 },
+                                '& .MuiOutlinedInput-root': {
+                                    fontSize: 11,
+                                    minWidth: 160,
+                                    maxHeight: 33,
+                                    '& fieldset': { borderColor: 'var(--primary)' },
+                                    '&:hover fieldset': { borderColor: 'var(--textSecondaryHover)' },
+                                    '&.Mui-focused fieldset': { borderColor: 'var(--secondary)' },
+                                },
+                            }}
+                        />
+                    </FormControl>
+
+                    <FormControl size="small">
+                        <TextField
+                            label="To Date"
+                            type="date"
+                            variant="outlined"
+                            InputLabelProps={{ shrink: true }}
+                            sx={{
+                                '& label': { color: 'var(--textSecondary)', fontSize: 11 },
+                                '& .MuiOutlinedInput-root': {
+                                    fontSize: 11,
+                                    minWidth: 160,
+                                    maxHeight: 33,
+                                    '& fieldset': { borderColor: 'var(--primary)' },
+                                    '&:hover fieldset': { borderColor: 'var(--textSecondaryHover)' },
+                                    '&.Mui-focused fieldset': { borderColor: 'var(--secondary)' },
+                                },
+                            }}
+                        />
+                    </FormControl>
+
+                    <FormControl size="small">
+                        <InputLabel
+                            id="range-select-label"
+                            sx={{ fontSize: 11, color: 'var(--textSecondary)' }}
+                        >
+                            Time Range
+                        </InputLabel>
+                        <Select
+                            labelId="range-select-label"
+                            value={range}
+                            label="Time Range"
+                            onChange={handleRangeChange}
+                            sx={{
+                                minWidth: 150,
+                                fontSize: 11,
+                                color: 'var(--textPrimary)',
+                                '&:hover': { backgroundColor: 'var(--hoverBackground)' },
+                            }}
+                        >
+                            <MenuItem value="daily" sx={{ fontSize: 11 }}>
+                                Daily
+                            </MenuItem>
+                            <MenuItem value="weekly" sx={{ fontSize: 11 }}>
+                                Weekly
+                            </MenuItem>
+                            <MenuItem value="quarterly" sx={{ fontSize: 11 }}>
+                                Quarterly
+                            </MenuItem>
+                            <MenuItem value="semiannually" sx={{ fontSize: 11 }}>
+                                Semi Annually
+                            </MenuItem>
+                            <MenuItem value="annually" sx={{ fontSize: 11 }}>
+                                Annually
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
             </div>
 
             <div className="h-[85%]">

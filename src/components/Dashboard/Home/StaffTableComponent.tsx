@@ -46,6 +46,7 @@ const StaffTableComponent: React.FC = () => {
                                 },
                             }}
                             disableRowSelectionOnClick
+                            autoHeight
                         />
                     </div>
                 </CardContent>
