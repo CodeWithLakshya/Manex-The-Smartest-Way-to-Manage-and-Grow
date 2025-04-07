@@ -68,52 +68,88 @@ const NoOfClients: React.FC = () => {
                                 },
                             }}
                         >
-                            <MenuItem value="yoy" sx={{fontSize: 11}}>Year on Year</MenuItem>
-                            <MenuItem value="pop" sx={{fontSize: 11}}>Period on Period</MenuItem>
-                            <MenuItem value="mom" sx={{fontSize: 11}}>Month on Month</MenuItem>
+                            <MenuItem value="yoy" sx={{ fontSize: 11 }}>Year on Year</MenuItem>
+                            <MenuItem value="pop" sx={{ fontSize: 11 }}>Period on Period</MenuItem>
+                            <MenuItem value="mom" sx={{ fontSize: 11 }}>Month on Month</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
 
                 <ResponsiveContainer width="100%" height={300}>
                     {data.yoy.length <= 1 ? (
-                        <BarChart data={currentData} margin={{ top: 20, right: 30, left: 40, bottom: 50 }}>
+                        <BarChart data={currentData} margin={{ top: 0, right: 30, left: 0, bottom: 30 }}>
                             <CartesianGrid strokeDasharray="3 3" stroke="var(--backgroundDefault)" />
                             <XAxis
                                 dataKey={xKey}
                                 stroke="var(--textSecondary)"
-                                label={{ value: 'Period', dy: 20 }}
-                                tick={{ fontSize: 12, fill: 'var(--textSecondary)' }}
+                                label={{
+                                    value: 'Period',
+                                    position: 'bottom',
+                                    offset: 1,
+                                    style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
+                                }}
+                                tick={{ fontSize: 11, fill: 'var(--textSecondary)' }}
                             />
                             <YAxis
                                 stroke="var(--textSecondary)"
-                                label={{ value: 'No. of Clients', angle: -90, dx: -10 }}
-                                tick={{ fontSize: 12, fill: 'var(--textSecondary)' }}
+                                label={{
+                                    value: 'No. of Clients',
+                                    angle: -90,
+                                    position: 'left',
+                                    offset: -20,
+                                    style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
+                                }}
+                                tick={{ fontSize: 11, fill: 'var(--textSecondary)' }}
                             />
-                            <Tooltip contentStyle={{ backgroundColor: 'var(--backgroundDefault)', border: 'none' }} />
-                            <Legend wrapperStyle={{ padding: 10, fontSize: 12, color: 'var(--textSecondary)' }} />
-                            <Bar dataKey="clients" fill="var(--primary)" />
+                            <Tooltip
+                                contentStyle={{ fontSize: 11, backgroundColor: 'var(--backgroundDefault)', borderRadius: 4, border: 'none' }}
+                            />
+                            <Legend
+                                wrapperStyle={{ fontSize: 11, color: 'var(--textSecondary)' }}
+                                verticalAlign="top"
+                            />
+                            <Bar
+                                dataKey="clients"
+                                fill="var(--textPrimary)"
+                                radius={[4, 4, 0, 0]}
+                            />
                         </BarChart>
                     ) : (
-                        <LineChart data={currentData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <LineChart data={currentData} margin={{ top: 0, right: 30, left: 0, bottom: 30 }}>
                             <CartesianGrid strokeDasharray="3 3" stroke="var(--backgroundDefault)" />
                             <XAxis
                                 dataKey={xKey}
                                 stroke="var(--textSecondary)"
-                                label={{ value: 'Period', dy: 10 }}
-                                tick={{ fontSize: 12, fill: 'var(--textSecondary)' }}
+                                label={{
+                                    value: 'Period',
+                                    position: 'bottom',
+                                    offset: 1,
+                                    style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
+                                }}
+                                tick={{ fontSize: 11, fill: 'var(--textSecondary)' }}
                             />
                             <YAxis
                                 stroke="var(--textSecondary)"
-                                label={{ value: 'No. of Clients', angle: -90, dy: 10 }}
-                                tick={{ fontSize: 12, fill: 'var(--textSecondary)' }}
+                                label={{
+                                    value: 'No. of Clients',
+                                    angle: -90,
+                                    position: 'left',
+                                    offset: -20,
+                                    style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
+                                }}
+                                tick={{ fontSize: 11, fill: 'var(--textSecondary)' }}
                             />
-                            <Tooltip contentStyle={{ backgroundColor: 'var(--backgroundDefault)', border: 'none' }} />
-                            <Legend wrapperStyle={{ padding: 10, fontSize: 12, color: 'var(--textSecondary)' }} />
+                            <Tooltip
+                                contentStyle={{ fontSize: 11, backgroundColor: 'var(--backgroundDefault)', borderRadius: 4, border: 'none' }}
+                            />
+                            <Legend
+                                wrapperStyle={{ fontSize: 11, color: 'var(--textSecondary)' }}
+                                verticalAlign="top"
+                            />
                             <Line
                                 type="monotone"
                                 dataKey="clients"
-                                stroke="var(--primary)"
+                                stroke="var(--textPrimary)"
                                 strokeWidth={3}
                                 activeDot={{ r: 8 }}
                                 dot={{ stroke: 'var(--primary)', strokeWidth: 2 }}

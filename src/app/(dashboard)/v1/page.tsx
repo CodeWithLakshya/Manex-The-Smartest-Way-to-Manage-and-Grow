@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { Typography, Paper, Box, Table, TableBody, TableCell, TableHead, TableRow, Card, CardContent, TextField, Button } from '@mui/material';
+import { Typography, Paper, Box, TextField, Button } from '@mui/material';
 import NoOfClients from '@/components/Dashboard/Charts/NoOfClients';
 import CardsComponent from '@/components/Dashboard/Home/CardsComponent';
 import Top5ClientsTable from '@/components/Dashboard/Home/Top5ClientsTableComponent';
@@ -8,6 +8,7 @@ import Top5ServicesComponent from '@/components/Dashboard/Home/Top5ServicesCompo
 import ServicesRevenuesPieChart from '@/components/Dashboard/Charts/ServicesRevenuesPieChart';
 import SingleUserEfficiencyChart from '@/components/Dashboard/Charts/SingleUserEfficiencyChart';
 import UserEfficiencyChart from '@/components/Dashboard/Charts/UserEfficiencyChart';
+import StaffTableComponent from '@/components/Dashboard/Home/StaffTableComponent';
 
 const DashboardPage: React.FC = () => {
     const [greeting, setGreeting] = useState<string>('');
@@ -48,23 +49,44 @@ const DashboardPage: React.FC = () => {
                         Clients Overview
                     </Typography>
 
-                    {/* Top 5 Clients Table and Clients Trend Chart */}
+                    {/* Top 5 Clients Table and Clients Trend Chart ** For Admin Only ** */}
                     <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Top 5 Clients Table */} <Top5ClientsTable />
                         {/* Clients Trend Chart */} <NoOfClients />
                     </Box>
 
-                    {/* Top 5 Services Table and Distribution of Revenue by Service Category */}
+                    {/* Section Header */}
+                    <Typography variant="h5" sx={{ color: 'var(--textPrimary)', fontWeight: 600 }}>
+                        Services Overview
+                    </Typography>
+
+                    {/* Top 5 Services Table and Distribution of Revenue by Service Category ** For Admin Only ** */}
                     <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Top 5 Services Table */} <Top5ServicesComponent />
                         {/* All Services Pie Chart based on Revenues */} <ServicesRevenuesPieChart />
                     </Box>
 
+                    {/* Section Header */}
+                    <Typography variant="h5" sx={{ color: 'var(--textPrimary)', fontWeight: 600 }}>
+                        Staff Members
+                    </Typography>
+
+                    {/* For User - Partner, Staff */}
+                    <Box className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        {/* Staff Members under Partner */} <StaffTableComponent />
+                    </Box>
+
+                    {/* Section Header */}
+                    <Typography variant="h5" sx={{ color: 'var(--textPrimary)', fontWeight: 600 }}>
+                        Performance Overview
+                    </Typography>
+
+                    {/* For User - Admin, Partner, Staff */}
                     <Box className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {/* Top 5 Services Table */} <UserEfficiencyChart />
                     </Box>
 
-                    {/* For User - Partner, Staff, Article */}
+                    {/* For User - Admin, Partner, Staff, Article */}
                     <Box className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {/* Top 5 Services Table */} <SingleUserEfficiencyChart />
                     </Box>

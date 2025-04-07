@@ -17,7 +17,6 @@ import {
     YAxis,
     Tooltip,
     ResponsiveContainer,
-    CartesianGrid,
     Legend,
 } from 'recharts';
 
@@ -67,41 +66,64 @@ const mockData: Record<string, UserEfficiencyData[]> = {
 
 const UserEfficiencyChart: React.FC = () => {
     const [range, setRange] = useState<string>('weekly');
+    const data = mockData[range];
 
     const handleRangeChange = (event: SelectChangeEvent) => {
         setRange(event.target.value);
     };
 
-    const data = mockData[range];
-
     return (
         <Paper
             elevation={3}
-            className="rounded-xl h-[26rem] p-4"
+            className="rounded-2xl h-[26rem] p-4"
             sx={{ backgroundColor: 'var(--backgroundPaper)' }}
         >
             <div className="flex justify-between items-center mb-4">
                 <Typography
                     variant="subtitle1"
-                    sx={{ color: 'var(--textPrimary)', fontSize: 11, fontWeight: 700 }}
+                    sx={{
+                        color: 'var(--textPrimary)',
+                        fontSize: 11,
+                        fontWeight: 700,
+                    }}
                 >
                     User Performance Metrics
                 </Typography>
 
                 <FormControl size="small">
-                    <InputLabel id="range-select-label" sx={{fontSize: 11}}>Time Range</InputLabel>
+                    <InputLabel
+                        id="range-select-label"
+                        sx={{ fontSize: 11, color: 'var(--textSecondary)' }}
+                    >
+                        Time Range
+                    </InputLabel>
                     <Select
                         labelId="range-select-label"
                         value={range}
                         label="Time Range"
                         onChange={handleRangeChange}
-                        sx={{ minWidth: 150, fontSize: 11 }}
+                        sx={{
+                            minWidth: 150,
+                            fontSize: 11,
+                            color: 'var(--textPrimary)',
+                            '&:hover': { backgroundColor: 'var(--hoverBackground)' },
+                        }}
                     >
-                        <MenuItem value="daily" sx={{fontSize: 11}}>Daily</MenuItem>
-                        <MenuItem value="weekly" sx={{fontSize: 11}}>Weekly</MenuItem>
-                        <MenuItem value="quarterly" sx={{fontSize: 11}}>Quarterly</MenuItem>
-                        <MenuItem value="semiannually" sx={{fontSize: 11}}>Semi Annually</MenuItem>
-                        <MenuItem value="annually" sx={{fontSize: 11}}>Annually</MenuItem>
+                        <MenuItem value="daily" sx={{ fontSize: 11 }}>
+                            Daily
+                        </MenuItem>
+                        <MenuItem value="weekly" sx={{ fontSize: 11 }}>
+                            Weekly
+                        </MenuItem>
+                        <MenuItem value="quarterly" sx={{ fontSize: 11 }}>
+                            Quarterly
+                        </MenuItem>
+                        <MenuItem value="semiannually" sx={{ fontSize: 11 }}>
+                            Semi Annually
+                        </MenuItem>
+                        <MenuItem value="annually" sx={{ fontSize: 11 }}>
+                            Annually
+                        </MenuItem>
                     </Select>
                 </FormControl>
             </div>
@@ -110,31 +132,49 @@ const UserEfficiencyChart: React.FC = () => {
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                         data={data}
-                        margin={{ top: 20, right: 30, left: 40, bottom: 40 }}
+                        margin={{ top: 0, right: 0, left: -10, bottom: 10 }}
                     >
-                        <CartesianGrid strokeDasharray="3 3" />
                         <XAxis
                             dataKey="name"
                             label={{
                                 value: 'Users',
                                 position: 'bottom',
-                                offset: 10,
-                                style: { textAnchor: 'middle' },
+                                offset: 1,
+                                style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
                             }}
+                            tick={{ fill: 'var(--textSecondary)', fontSize: 11 }}
                         />
                         <YAxis
                             label={{
                                 value: 'Number of Tasks',
                                 angle: -90,
                                 position: 'left',
-                                offset: 20,
-                                style: { textAnchor: 'middle' },
+                                offset: -20,
+                                style: { textAnchor: 'middle', fill: 'var(--textPrimary)', fontSize: 11 },
                             }}
+                            tick={{ fill: 'var(--textSecondary)', fontSize: 11 }}
                         />
-                        <Tooltip formatter={(value: number) => `${value} tasks`} />
-                        <Legend verticalAlign="top" height={36} />
-                        <Bar dataKey="totalTasks" fill="#CBD5E1" name="Total Tasks" />
-                        <Bar dataKey="tasksCompleted" fill="#4ADE80" name="Tasks Completed" />
+                        <Tooltip
+                            formatter={(value: number) => `${value} tasks`}
+                            contentStyle={{ fontSize: 11, backgroundColor: 'var(--background)', borderRadius: 4 }}
+                        />
+                        <Legend
+                            verticalAlign="top"
+                            height={36}
+                            wrapperStyle={{ fontSize: 11, color: 'var(--textSecondary)' }}
+                        />
+                        <Bar
+                            dataKey="totalTasks"
+                            fill="var(--textSecondary)"
+                            name="Total Tasks"
+                            radius={[4, 4, 0, 0]}
+                        />
+                        <Bar
+                            dataKey="tasksCompleted"
+                            fill="var(--textPrimary)"
+                            name="Tasks Completed"
+                            radius={[4, 4, 0, 0]}
+                        />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
