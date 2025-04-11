@@ -1,12 +1,12 @@
 import { connectDB } from "@/app/lib/mongodb"
-import User from "@/app/models/user"
+import Client from "@/app/models/client"
 import { NextResponse } from "next/server"
 
 export async function GET() {
     try {
         await connectDB()
-        const users = await User.find()
-        return NextResponse.json(users)
+        const clients = await Client.find()
+        return NextResponse.json(clients)
     } catch (error) {
         return NextResponse.json({ error: "Database Connection Failed" }, { status: 500 })
     }

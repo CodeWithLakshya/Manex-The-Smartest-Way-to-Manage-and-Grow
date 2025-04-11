@@ -1,12 +1,12 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document, Model } from "mongoose"
 
 export interface IUser extends Document {
-  userId: string;
-  name: string;
-  password: string;
-  cpwd: string;
-  email: string;
-  mobile: string;
+  userId: string
+  name: string
+  password: string
+  cpwd: string
+  email: string
+  mobile: string
 }
 
 const UserSchema: Schema<IUser> = new Schema(
@@ -19,9 +19,9 @@ const UserSchema: Schema<IUser> = new Schema(
     mobile: {type: String, required: true}
   },
   { timestamps: true }
-);
+)
 
 // Fix model initialization to avoid Mongoose re-compilation errors
-const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema, "Users");
+const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema, "Users")
 
-export default User;
+export default User

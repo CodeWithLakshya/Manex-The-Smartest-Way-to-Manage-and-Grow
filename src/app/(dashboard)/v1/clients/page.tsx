@@ -44,8 +44,6 @@ const columns: GridColDef[] = [
   { field: "clientId", headerName: "Client ID", flex: 1 },
   { field: "name", headerName: "Client Name", flex: 1 },
   { field: "pan", headerName: "PAN No.", flex: 1 },
-  { field: "email", headerName: "Email ID", flex: 1 },
-  { field: "phone", headerName: "Mobile No.", flex: 1 },
   { field: "status", headerName: "Status", flex: 1 }
 ]
 
