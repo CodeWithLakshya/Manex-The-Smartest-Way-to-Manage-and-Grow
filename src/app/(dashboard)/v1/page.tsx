@@ -12,7 +12,7 @@ import StaffTableComponent from '@/components/Dashboard/Home/StaffTableComponent
 
 const DashboardPage: React.FC = () => {
     const [greeting, setGreeting] = useState<string>('');
-    const [filter, setFilter] = useState<string>('');
+    // const [filter, setFilter] = useState<string>('');
     const [startDate, setStartDate] = useState<string>('');
     const [endDate, setEndDate] = useState<string>('');
 
