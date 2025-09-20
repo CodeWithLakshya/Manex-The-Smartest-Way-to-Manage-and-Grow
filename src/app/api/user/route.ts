@@ -46,8 +46,9 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json({ messages, user }, { status: 200 });
 
-    } catch () {
+    } catch (error) {
         errors.push('Database Connection Failed')
+        return NextResponse.json({ error }, { status: 200 });
     }
 
     return new Response('Validation successful', { status: 200 });
