@@ -12,7 +12,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
         }
         return NextResponse.json(client)
     } catch (error) {
-        return NextResponse.json({ error: "Database Connection Failed", id: id }, { status: 500 })
+        return NextResponse.json({ error: "Database Connection Failed",error1: error, id: id }, { status: 500 })
     }
 }
 
@@ -27,7 +27,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         }
         return NextResponse.json({ message: "Client Updated Successfully" })
     } catch (error) {
-        return NextResponse.json({ error: "Database Connection Failed", id: id }, { status: 500 })
+        return NextResponse.json({ error: "Database Connection Failed",error1: error, id: id }, { status: 500 })
     }
 }
 
@@ -41,6 +41,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
         }
         return NextResponse.json({ message: "Client Deleted Successfully" })
     } catch (error) {
-        return NextResponse.json({ error: "Database Connection Failed", id: id }, { status: 500 })
+        return NextResponse.json({ error: "Database Connection Failed",error1: error, id: id }, { status: 500 })
     }
 }
