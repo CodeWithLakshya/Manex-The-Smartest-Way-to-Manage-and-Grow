@@ -8,7 +8,9 @@ if (!MONGODB_URI) {
 }
 
 // Maintain a cached connection
-let cached = (global as any).mongoose || { conn: null, promise: null };
+const cached = (global as any).mongoose || { conn: null, promise: null };
+// const cached: { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null } = (global as any).mongoose || { conn: null, promise: null };
+
 
 export const connectDB = async (): Promise<typeof mongoose> => {
   if (cached.conn) {
