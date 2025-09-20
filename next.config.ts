@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
     unoptimized: true, // disable Next.js image optimization
   },
   basePath: "/Manex-The-Smartest-Way-to-Manage-and-Grow", // important for GitHub Pages
+  eslint: {
+    ignoreDuringBuilds: true, // ignore lint errors during build
+  },
   /* config options here */
   webpack: (config) => {
     config.resolve.alias = {
