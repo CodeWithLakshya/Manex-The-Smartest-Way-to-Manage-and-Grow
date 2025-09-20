@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
     unoptimized: true, // disable Next.js image optimization
   },
   basePath: "/Manex-The-Smartest-Way-to-Manage-and-Grow", // important for GitHub Pages
-  assetPrefix: "/Manex-The-Smartest-Way-to-Manage-and-Grow/",
   /* config options here */
   webpack: (config) => {
     config.resolve.alias = {
