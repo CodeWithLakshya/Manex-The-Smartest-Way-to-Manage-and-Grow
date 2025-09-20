@@ -8,6 +8,6 @@ export async function GET() {
         const clients = await Client.find()
         return NextResponse.json(clients)
     } catch (error) {
-        return NextResponse.json({ error: "Database Connection Failed" }, { status: 500 })
+        return NextResponse.json({ error: "Database Connection Failed",error1: error }, { status: 500 })
     }
 }
