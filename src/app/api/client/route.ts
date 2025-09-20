@@ -9,6 +9,6 @@ export async function POST(req: NextRequest) {
         await Client.insertOne(body)
         return NextResponse.json({message: "Client created successfully!"}, { status: 200 })
     } catch (error) {
-        return NextResponse.json({ error: "Database Connection Failed" }, { status: 500 });
+        return NextResponse.json({ error: "Database Connection Failed",error1: error, }, { status: 500 });
     }
 }
