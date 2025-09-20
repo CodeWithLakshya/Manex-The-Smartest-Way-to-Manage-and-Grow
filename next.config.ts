@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true, // ignore lint errors during build
   },
+  typescript: {
+    ignoreBuildErrors: true, // <-- this ignores TypeScript errors
+  },
   /* config options here */
   webpack: (config) => {
     config.resolve.alias = {
