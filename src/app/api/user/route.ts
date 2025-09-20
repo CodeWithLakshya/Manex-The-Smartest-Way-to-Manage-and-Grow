@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json({ messages, user }, { status: 200 });
 
-    } catch (error) {
+    } catch () {
         errors.push('Database Connection Failed')
     }
 
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         await newUser.save();
 
         return NextResponse.json({ user, message: "User created successfully" }, { status: 200 })
-    } catch (error) {
+    } catch () {
         errors.push('Database Connection Failed')
     }
 
